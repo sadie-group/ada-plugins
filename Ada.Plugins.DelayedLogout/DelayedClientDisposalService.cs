@@ -1,4 +1,5 @@
 using Ada.API.Interfaces.Networking.Client;
+using Ada.Networking.Writers.Rooms.Users;
 using Microsoft.Extensions.Logging;
 
 namespace Ada.Plugins.DelayedLogout;
@@ -29,6 +30,23 @@ public class DelayedClientDisposalService(
             "Delaying logout of '{Username}' by {Delay}s",
             player.Player.Username,
             options.DelaySeconds);
+
+        var roomUser = client.RoomUser;
+
+        if (roomUser != null)
+        {
+            var message = $"Logging out in {options.DelaySeconds} seconds...";
+
+            await roomUser.Room.BroadcastDataAsync(new RoomUserShoutWriter
+            {
+                SenderId = player.Player.Id,
+                Message = message,
+                EmotionId = 0,
+                ChatBubbleId = 0,
+                Urls = [],
+                MessageLength = message.Length
+            });
+        }
 
         try
         {

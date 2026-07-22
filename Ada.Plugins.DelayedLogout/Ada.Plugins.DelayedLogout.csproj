@@ -11,6 +11,7 @@
     <ItemGroup>
         <ProjectReference Include="../../ada/Ada.API/Ada.API.csproj" Private="false" />
         <ProjectReference Include="../../ada/Ada.Core/Ada.Core.csproj" Private="false" />
+        <ProjectReference Include="../../ada/Ada.Networking.Writers/Ada.Networking.Writers.csproj" Private="false" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.1" ExcludeAssets="runtime" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.1" ExcludeAssets="runtime" />
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.1" ExcludeAssets="runtime" />
